@@ -2,10 +2,10 @@ apiVersion: yoke.cloud/v1alpha1
 kind: Flight
 metadata:
   name: pg-test
-  namespace: default
+  namespace: argocd
 spec:
   wasmURL: https://github.com/davidmdm/flights/releases/download/v0.0.0-yokecd-test/pg.wasm
   destination:
     name: in-cluster
-    namespace: argocd
+    namespace: default
   project: default
