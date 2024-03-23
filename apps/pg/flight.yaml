@@ -9,3 +9,7 @@ spec:
     name: in-cluster
     namespace: default
   project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
