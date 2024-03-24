@@ -8,9 +8,11 @@ import (
 	"k8s.io/apimachinery/pkg/apis/meta/v1/unstructured"
 )
 
-//go:embed postgresql-14.3.3.tgz
+//go:embed postgresql-15.1.2.tgz
 var archive []byte
 
+// RenderChart renders the chart downloaded from oci://registry-1.docker.io/bitnamicharts/postgresql
+// Producing version: 15.1.2
 func RenderChart(release, namespace string, values *Values) ([]*unstructured.Unstructured, error) {
 	chart, err := helm.LoadChartFromZippedArchive(archive)
 	if err != nil {

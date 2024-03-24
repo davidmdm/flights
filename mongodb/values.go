@@ -707,6 +707,9 @@ type ValuesBackupCronjob struct {
 	// Set the cronjob annotations
 	Annotations ValuesBackupCronjobAnnotations `json:"annotations,omitempty" yaml:"annotations,omitempty" mapstructure:"annotations,omitempty"`
 
+	// Set the cronjob parameter backoffLimit
+	BackoffLimit float64 `json:"backoffLimit,omitempty" yaml:"backoffLimit,omitempty" mapstructure:"backoffLimit,omitempty"`
+
 	// Set backup container's command to run
 	Command []interface{} `json:"command,omitempty" yaml:"command,omitempty" mapstructure:"command,omitempty"`
 

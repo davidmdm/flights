@@ -193,11 +193,21 @@ type ValuesBackupCronjob struct {
 	// "containerSecurityContext".
 	ContainerSecurityContext *ValuesBackupCronjobContainerSecurityContext `json:"containerSecurityContext,omitempty" yaml:"containerSecurityContext,omitempty" mapstructure:"containerSecurityContext,omitempty"`
 
+	// Optionally specify extra list of additional volumeMounts for the backup
+	// container
+	ExtraVolumeMounts []interface{} `json:"extraVolumeMounts,omitempty" yaml:"extraVolumeMounts,omitempty" mapstructure:"extraVolumeMounts,omitempty"`
+
+	// Optionally specify extra list of additional volumes for the backup container
+	ExtraVolumes []interface{} `json:"extraVolumes,omitempty" yaml:"extraVolumes,omitempty" mapstructure:"extraVolumes,omitempty"`
+
 	// Set the cronjob parameter failedJobsHistoryLimit
 	FailedJobsHistoryLimit float64 `json:"failedJobsHistoryLimit,omitempty" yaml:"failedJobsHistoryLimit,omitempty" mapstructure:"failedJobsHistoryLimit,omitempty"`
 
 	// Set the cronjob labels
 	Labels ValuesBackupCronjobLabels `json:"labels,omitempty" yaml:"labels,omitempty" mapstructure:"labels,omitempty"`
+
+	// NetworkPolicy corresponds to the JSON schema field "networkPolicy".
+	NetworkPolicy *ValuesBackupCronjobNetworkPolicy `json:"networkPolicy,omitempty" yaml:"networkPolicy,omitempty" mapstructure:"networkPolicy,omitempty"`
 
 	// Node labels for PostgreSQL backup CronJob pod assignment
 	NodeSelector ValuesBackupCronjobNodeSelector `json:"nodeSelector,omitempty" yaml:"nodeSelector,omitempty" mapstructure:"nodeSelector,omitempty"`
@@ -281,6 +291,11 @@ type ValuesBackupCronjobContainerSecurityContextSeccompProfile struct {
 // Set the cronjob labels
 type ValuesBackupCronjobLabels map[string]interface{}
 
+type ValuesBackupCronjobNetworkPolicy struct {
+	// Specifies whether a NetworkPolicy should be created
+	Enabled bool `json:"enabled,omitempty" yaml:"enabled,omitempty" mapstructure:"enabled,omitempty"`
+}
+
 // Node labels for PostgreSQL backup CronJob pod assignment
 type ValuesBackupCronjobNodeSelector map[string]interface{}
 
@@ -310,6 +325,9 @@ type ValuesBackupCronjobStorage struct {
 
 	// PVC annotations
 	Annotations ValuesBackupCronjobStorageAnnotations `json:"annotations,omitempty" yaml:"annotations,omitempty" mapstructure:"annotations,omitempty"`
+
+	// Enable using a `PersistentVolumeClaim` as backup data volume
+	Enabled bool `json:"enabled,omitempty" yaml:"enabled,omitempty" mapstructure:"enabled,omitempty"`
 
 	// Provide an existing `PersistentVolumeClaim` (only when
 	// `architecture=standalone`)

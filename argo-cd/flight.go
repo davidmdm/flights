@@ -8,11 +8,11 @@ import (
 	"k8s.io/apimachinery/pkg/apis/meta/v1/unstructured"
 )
 
-//go:embed argo-cd-6.7.2.tgz
+//go:embed argo-cd-6.7.3.tgz
 var archive []byte
 
 // RenderChart renders the chart downloaded from https://argoproj.github.io/argo-helm/argo-cd
-// Producing version: 6.7.2
+// Producing version: 6.7.3
 func RenderChart(release, namespace string, values map[string]any) ([]*unstructured.Unstructured, error) {
 	chart, err := helm.LoadChartFromZippedArchive(archive)
 	if err != nil {

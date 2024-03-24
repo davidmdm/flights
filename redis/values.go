@@ -934,7 +934,7 @@ type ValuesMetricsPodMonitor struct {
 	Port string `json:"port,omitempty" yaml:"port,omitempty" mapstructure:"port,omitempty"`
 
 	// Metrics RelabelConfigs to apply to samples before scraping.
-	Relabellings []interface{} `json:"relabellings,omitempty" yaml:"relabellings,omitempty" mapstructure:"relabellings,omitempty"`
+	Relabelings []interface{} `json:"relabelings,omitempty" yaml:"relabelings,omitempty" mapstructure:"relabelings,omitempty"`
 
 	// Limit of how many samples should be scraped from every Pod
 	SampleLimit bool `json:"sampleLimit,omitempty" yaml:"sampleLimit,omitempty" mapstructure:"sampleLimit,omitempty"`
@@ -1059,7 +1059,7 @@ type ValuesMetricsServiceMonitor struct {
 	Port string `json:"port,omitempty" yaml:"port,omitempty" mapstructure:"port,omitempty"`
 
 	// Metrics RelabelConfigs to apply to samples before scraping.
-	Relabellings []interface{} `json:"relabellings,omitempty" yaml:"relabellings,omitempty" mapstructure:"relabellings,omitempty"`
+	Relabelings []interface{} `json:"relabelings,omitempty" yaml:"relabelings,omitempty" mapstructure:"relabelings,omitempty"`
 
 	// Limit of how many samples should be scraped from every Pod
 	SampleLimit bool `json:"sampleLimit,omitempty" yaml:"sampleLimit,omitempty" mapstructure:"sampleLimit,omitempty"`

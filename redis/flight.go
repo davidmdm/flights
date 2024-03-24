@@ -8,9 +8,11 @@ import (
 	"k8s.io/apimachinery/pkg/apis/meta/v1/unstructured"
 )
 
-//go:embed redis-18.19.2.tgz
+//go:embed redis-19.0.1.tgz
 var archive []byte
 
+// RenderChart renders the chart downloaded from oci://registry-1.docker.io/bitnamicharts/redis
+// Producing version: 19.0.1
 func RenderChart(release, namespace string, values *Values) ([]*unstructured.Unstructured, error) {
 	chart, err := helm.LoadChartFromZippedArchive(archive)
 	if err != nil {
