@@ -1,14 +1,26 @@
-apiVersion: yoke.cloud/v1alpha1
-kind: Flight
+apiVersion: argoproj.io/v1alpha1
+kind: Application
 metadata:
   name: pg-test
   namespace: argocd
 spec:
-  wasmURL: https://github.com/davidmdm/flights/releases/download/v0.0.0-yokecd-test/pg.wasm
+  project: default
+
+  source:
+    repoURL: https://github.com/davidmdm/flights
+    path: ./
+    targetRevision: apps
+
+    plugin:
+      name: yokecd
+      parameters:
+        - name: wasmURL
+          string: https://github.com/davidmdm/flights/releases/download/v0.0.0-yokecd-test/pg.wasm
+
   destination:
     name: in-cluster
     namespace: default
-  project: default
+
   syncPolicy:
     automated:
       prune: true
